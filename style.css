@@ -1,0 +1,244 @@
+:root {
+    --bg-color-start: #1e3c72;
+    --bg-color-end: #2a5298;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --card-border: rgba(255, 255, 255, 0.3);
+    --text-color: #f0f0f0;
+    --primary-color: #3498db;
+    --secondary-color: #e74c3c;
+    --icon-color: #f1c40f;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Main Container */
+.weather-container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box input:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.search-box button {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.search-box button:hover {
+    transform: scale(1.1);
+    background: #2980b9;
+}
+
+#location {
+    background: var(--secondary-color);
+}
+
+#location:hover {
+    background: #c0392b;
+}
+
+/* Weather Card */
+.weatherCard {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border);
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+#cityName {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0 0 5px;
+}
+
+#description {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+#weatherIcon {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+}
+
+#temperature {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Details Section */
+.details {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-top: 1px solid var(--card-border);
+    margin-top: 20px;
+}
+
+.item {
+    text-align: center;
+}
+
+.item i {
+    font-size: 1.8rem;
+    color: var(--icon-color);
+    margin-bottom: 5px;
+}
+
+.item p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.item span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/*  Toggle */
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.toggle .label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.toggle .label.active {
+    opacity: 1;
+    font-weight: 700;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* for error side */
+
+.errorMessage {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-top: 20px;
+    font-weight: 500;
+}
